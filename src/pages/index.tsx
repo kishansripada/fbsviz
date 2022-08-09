@@ -51,7 +51,7 @@ const Home: NextPage<{ lines: object[] }> = ({ lines }) => {
                      top: clientY + 70,
                      transform: "translate(-50%, -50%)",
                   }}
-                  className=" bg-white px-3 ring-1 ring-black  rounded-lg font-semibold absolute min-w-[200px] py-2"
+                  className=" bg-white px-3   rounded-lg font-semibold absolute min-w-[200px] py-2"
                >
                   <p className="pb-3"> {teamHover}</p>
                   <p className="opacity-60 text-sm">CONF.</p>
@@ -124,17 +124,21 @@ export const Game = ({
                <Percentage homeColor={homeColor} awayColor={awayColor} awayPercent={awayPercent} width={200}></Percentage>
                <div className="flex flex-row  items-center relative top-[-135px] ">
                   <Image
+                     width={48}
+                     height={48}
                      onMouseEnter={() => setTeamHover(homeName)}
                      onMouseLeave={() => setTeamHover(undefined)}
-                     className="h-12 "
+                     className="h-12 pointer-events-none"
                      src={homeLogo}
                      alt=""
                   />
                   <p className="text-[50px] mx-1">＠</p>
                   <Image
+                     width={48}
+                     height={48}
                      onMouseEnter={() => setTeamHover(awayName)}
                      onMouseLeave={() => setTeamHover(undefined)}
-                     className="h-12"
+                     className="h-12 pointer-events-none"
                      src={awayLogo}
                      alt=""
                   />
