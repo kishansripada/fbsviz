@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 import michiganStateSpartans from "../../public/michiganstatespartans.svg";
 
-const Home: NextPage = ({ lines }) => {
+const Home: NextPage<{ lines: object[] }> = ({ lines }) => {
    const [teamHover, setTeamHover] = useState(false);
    const { clientX, clientY } = useMousePosition();
 
@@ -27,10 +27,10 @@ const Home: NextPage = ({ lines }) => {
             awayPercent={moneylineToImpliedPercent(line.lines[0].homeMoneyline, line.lines[0].awayMoneyline).awayMoneylinePercent}
             homeColor={homeTeam?.color || "black"}
             awayColor={awayTeam?.color || "gray"}
-            homeLogo={homeTeam.logos[0]}
-            awayLogo={awayTeam.logos[0]}
-            homeName={homeTeam.school}
-            awayName={awayTeam.school}
+            homeLogo={homeTeam?.logos?.[0] ?? ""}
+            awayLogo={awayTeam?.logos?.[0] ?? "black"}
+            homeName={homeTeam?.school || ""}
+            awayName={awayTeam?.school || ""}
             setTeamHover={setTeamHover}
          />
       );
