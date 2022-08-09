@@ -128,7 +128,7 @@ export const Game = ({
                      height={48}
                      onMouseEnter={() => setTeamHover(homeName)}
                      onMouseLeave={() => setTeamHover(undefined)}
-                     className="h-12 pointer-events-none"
+                     className="h-12"
                      src={homeLogo}
                      alt=""
                   />
@@ -138,7 +138,7 @@ export const Game = ({
                      height={48}
                      onMouseEnter={() => setTeamHover(awayName)}
                      onMouseLeave={() => setTeamHover(undefined)}
-                     className="h-12 pointer-events-none"
+                     className="h-12"
                      src={awayLogo}
                      alt=""
                   />
