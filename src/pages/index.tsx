@@ -15,7 +15,7 @@ const Home: NextPage<{ lines: object[] }> = ({ lines }) => {
 
    // lines = lines.filter((line: any) => line.lines[1]?.awayMoneyline);
    lines = lines.map((line) => {
-      return { ...line, lines: line.lines.filter((line) => line?.awayMoneyline) };
+      return { ...line, lines: line?.(lines as any).filter((line: any) => line?.awayMoneyline) };
    });
    const games = lines.map((line: any, index: number) => {
       let homeTeam = teams.find((team: any) => team.school === line.homeTeam);
