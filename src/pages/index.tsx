@@ -9,11 +9,14 @@ import Image from "next/image";
 import michiganStateSpartans from "../../public/michiganstatespartans.svg";
 
 const Home: NextPage<{ lines: object[] }> = ({ lines }) => {
+   console.log(lines);
    const [teamHover, setTeamHover] = useState(false);
    const { clientX, clientY } = useMousePosition();
 
-   lines = lines.filter((line: any) => line.lines[0]?.awayMoneyline);
-
+   // lines = lines.filter((line: any) => line.lines[1]?.awayMoneyline);
+   lines = lines.map((line) => {
+      return { ...line, lines: line.lines.filter((line) => line?.awayMoneyline) };
+   });
    const games = lines.map((line: any, index: number) => {
       let homeTeam = teams.find((team: any) => team.school === line.homeTeam);
       let awayTeam = teams.find((team: any) => team.school === line.awayTeam);
@@ -168,7 +171,7 @@ export const Game = ({
 // This gets called on every request
 export async function getServerSideProps() {
    // Fetch data from external API
-   const res = await fetch("https://api.collegefootballdata.com/lines?year=2022&seasonType=regular&week=1&conference=B1G", {
+   const res = await fetch("https://api.collegefootballdata.com/lines?year=2022&seasonType=regular&week=7&conference=B1G", {
       headers: {
          Accept: "application/json",
          Authorization: "Bearer mnH15cL9zOuEKn7jmSN33+Rz+lKDFx7cHw7HNTcDM819/019HDl+WmNsdAxfrpVh",
